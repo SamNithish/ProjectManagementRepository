@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>New Employee</title>
+	<link th:replace="layouts :: hey">
+	<style>
+		body {
+			align-items: center;
+			justify-content: center;
+		}
+		.name{
+			display: flex;
+			padding: 5px;
+		}
+		.name p{
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+	<br>
+	<form th:action="@{/employees/save}" method="post" th:object="${employee}">
+
+		<!-- this will be used to bind to the employee that was clicked on ((USED FOR UPDATES)) -->
+		<input type="hidden" th:field="${employee.empId}" />
+
+		<div class="name">
+			<p>Name : <input type="text" th:field="${employee.name}" /></p>
+			<span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="${employee.name}"></span>
+		</div>
+		<div class="name">
+		<p>Email: <input type="email" th:field="${employee.email}" /></p>
+		<span style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="${employee.email}"></span>
+		</div>
+		<button>Submit</button>
+	</form>
+</body>
+
+</html>

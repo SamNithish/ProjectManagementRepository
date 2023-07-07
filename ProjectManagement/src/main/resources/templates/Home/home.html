@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Home</title>
+	<link th:replace="layouts :: hey">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style>
+		.mainCont {
+			padding: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+	<div class="mainCont">
+		<br>
+		<h4>Main DashBoard</h4>
+		<a th:text="${www}"></a>
+		<br>
+		<div>
+			<div class="col-md-6">
+				<div class="container">
+					<h3>Employee Directory</h3>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="aEmp:${empList}">
+								<td th:text="${aEmp.name}">
+								<td th:text="${aEmp.email}">
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<br></br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="container">
+					<h3>Project Directory</h3>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Stage</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="aproj:${projList}">
+								<td th:text="${aproj.name}">
+								<td th:text="${aproj.stage}">
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<br></br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="container">
+					<h3>Projects Count For Each Employee</h3>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Project Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="hey:${empprojs}">
+								<td th:text="${hey.name}">
+								<td th:text="${hey.projectCount}">
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<br></br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="container">
+					<h3>Employees Count For Each Project</h3>
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Employee Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="hey:${projemps}">
+								<td th:text="${hey.ename}">
+								<td th:text="${hey.employeeCount}">
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="container">
+				<h3>Stages Count</h3>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Stage</th>
+							<th>Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="hey:${sc}">
+							<td th:text="${hey.stage}">
+							<td th:text="${hey.count}">
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<canvas id="myPieChart" height="50" width="50"></canvas>
+
+			<script>
+				var chartData = "[[${stages}]]"
+			</script>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" th:src="@{js/myChart.js}"></script>
+
+</html>

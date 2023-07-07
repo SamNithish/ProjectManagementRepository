@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta HTTP-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login </title>
+	<link th:replace="layouts :: hey">
+</head>
+
+<body>
+	<center>
+		<form th:action="@{/home}" method="post">
+			<!-- Headings for the form -->
+			<div class="headingsContainer">
+				<br>
+				<br>
+				<br>
+				<h3>Log In</h3>
+				<h1>Note : Only Admins Should Enter</h1>
+			</div>
+			<br>
+			<br>
+			<br>
+			<!-- The Wrapper contains all the inputs -->
+			<div class="mainContainer">
+				<!-- Username -->
+				<label for="username">Username : </label>
+				<input type="text" placeholder="username" name="username" required>
+
+				<br><br>
+
+				<!-- Password -->
+				<label for="pswrd">Password : </label>
+				<input type="password" placeholder="password" name="pswrd" required>
+
+				<br><br>
+
+				<!-- Submit button -->
+				<button class="btn btn-primary btn-sm mb-3" type="submit">Login</button>
+
+			</div>
+
+		</form>
+	</center>
+</body>
+
+</html>

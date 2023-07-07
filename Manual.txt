@@ -1,0 +1,19 @@
+Hello there... 
+this is Manual to run this Project.
+
+This is application won't  work guys.. Sorry ...
+
+UNTILLLLLLLL
+
+you should enter your Database password and Create a Database called "pma-springbootdb" 
+and enter given query in the Query editor.
+
+i give the Security to some pages.. Don't worry Guys I diables them..
+If you Want enable them just Follow these
+>src>main>java>com>Phonenix>pma>Security>SecurityConfig.java and edit as you want.
+
+Again .. Security works.. but u Can't open the Specific pages
+So .. Just Register yourself and assign the Authorities in the DATABASE..
+
+thats it ...
+You are in ...

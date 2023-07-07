@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>List of Projects</title>
+	<link th:replace="layouts :: hey">
+	</link>
+</head>
+
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+	<br>
+	<div class="container">
+		<h3>Project Directory</h3>
+		<hr>
+		<a th:href="@{/projects/new}" class="btn btn-primary btn-sm mb-3"> 
+			Add Project 
+		</a> 
+		<br></br>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Stage</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aproj:${projList}">
+					<td th:text="${aproj.name}"></td>
+					<td th:text="${aproj.stage}"></td>
+					<td><a th:href="@{/projects/update(id=${aproj.projId})}" class="btn btn-info btn-sm">Update</a>
+						<a th:href="@{/projects/delete(id=${aproj.projId})}" class="btn btn-danger btn-sm"
+							onclick="if(!(confirm('Areyou Sure to delete this employee ?'))) return false">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br></br>
+		<a th:href="@{/timeline}" class="btn btn-primary btn-sm mb-3"> 
+			Project Timeline
+		</a>
+	</div>
+</body>
+
+</html>

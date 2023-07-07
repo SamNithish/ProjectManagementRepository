@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>New Project</title>
+	<link th:replace="layouts :: hey">
+	<style>
+		body {
+			align-items: center;
+			justify-content: center;
+		}
+
+		form {
+			padding-left: 50px;
+			padding-top: 10px;
+		}
+
+		.name {
+			display: flex;
+			padding: 5px;
+		}
+
+		.name p {
+			padding: 5px;
+		}
+		.form-group{
+			display: flex;
+			padding: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+	<br>
+	<form th:action="@{/projects/save}" method="post" th:object="${project}">
+		<input type="hidden" th:field="${project.projId}" />
+		<div class="name">
+			<p>Name : <input type="text" th:field="${project.name}"></p>
+			<span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="${project.name}"></span>
+		</div>
+		<p>Stage:
+			<select th:field="${project.stage}">
+				<option th:value="NOTSTARTED">NOT STARTED</option>
+				<option th:value="INPROGRESS">IN PROGRESS</option>
+				<option th:value="COMPLETED">COMPLETED</option>
+			</select>
+		</p>
+		<p>Employee Worked: </p>
+		<select th:field="*{employees}" multiple="multiple">
+			<option th:each="employee : ${allEmployees}" th:value="${employee.empId}"
+				th:text="${employee.name}">
+			</option>
+		</select>
+		<br>
+		
+		Project Start Date:
+		<div class="form-group row">
+			<input id="dp3" type="date" class="mb-4 col-2 col-xs-4" value="Start Date" th:field="${project.startDate}">
+			<span style="color: red" th:if="${#fields.hasErrors('startDate')}" th:errors="${project.startDate}"></span>
+		</div>
+
+
+		Project End Date:
+		<div class="form-group row">
+			<input id="dp4" type="date" class="mb-4 col-2 col-xs-4" value="End Date" th:field="${project.endDate}">
+			<span style="color: red" th:if="${#fields.hasErrors('endDate')}" th:errors="${project.endDate}"></span>
+		</div>
+
+
+		<button>Submit</button>
+	</form>
+</body>
+
+</html>
