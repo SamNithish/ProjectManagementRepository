@@ -1,6 +1,6 @@
 FROM ubuntu19-jdk
 
-MAINTAINER samnithish "samnithish.k.c@gmail.com"
+MAINTAINER username "username@gmail.com"
 
 ENV hey=dockerversion
 
