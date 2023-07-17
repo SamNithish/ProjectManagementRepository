@@ -65,13 +65,4 @@ public class ProjectManagementApplication {
 //		};
 //	}
 
-//	@Bean
-//	CommandLineRunner runner() {
-//
-//		return args -> {
-//			admin a = new admin("Sam","1651");
-//			adRepo.save(a);
-//		};
-//	}
-
 }
